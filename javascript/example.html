@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="lks92-wgs84.js"></script>
+</head>
+<body>
+    <script>
+        function TestCase(coordinates) {
+            var converted = LKS92WGS84.convertXYToLatLon(LKS92WGS84.convertLatLonToXY(coordinates)),
+                result;
+
+            if (Math.round(converted[0] * Math.pow(10, 8)) / Math.pow(10, 8) == Math.round(coordinates[0] * Math.pow(10, 8)) / Math.pow(10, 8) && Math.round(converted[1] * Math.pow(10, 8)) / Math.pow(10, 8) == Math.round(coordinates[1] * Math.pow(10, 8)) / Math.pow(10, 8)) {
+                result = "izpildās";
+            } else {
+                result = "neizpildās";
+            }
+
+            return result;
+        }
+
+        var coordinates = [58.079501574948, 25.189986971284];
+        console.log("\"Baltās naktis\" - Latvijas tālākais ziemeļu punkts [" + coordinates + "] => " + TestCase(coordinates));
+        coordinates = [56.172282784562, 28.095216442873];
+        console.log("\"Austras koks\" - Latvijas tālākais austrumu punkts [" + coordinates + "] => " + TestCase(coordinates));
+        coordinates = [55.675228242509, 26.580528487143];
+        console.log("\"Saules puķe\" - Latvijas tālākais dienvidu punkts [" + coordinates + "] => " + TestCase(coordinates));
+        coordinates = [56.377008455189, 20.979185882058];
+        console.log("\"Zaļais stars\" - Latvijas galējais rietumu punkts [" + coordinates + "] => " + TestCase(coordinates));
+    </script>
+</body>
+</html>
