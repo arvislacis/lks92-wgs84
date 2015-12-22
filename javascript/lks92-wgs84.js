@@ -1,19 +1,21 @@
-var LKS92WGS84 = {
+var LKS92WGS84 = function() {
+    // publicStatic objekts paredzēts tikai JavaScript un tam līdzīgo programmēšanas valodu risinājumiem
+    var publicStatic = {},
     // Koordinātu pārveidojumos izmantotās konstantes
-    PI: Math.PI,                            // Skaitlis pi
-    A_AXIS: 6378137,                        // Elipses modeļa lielā ass (a)
-    B_AXIS: 6356752.31414,                  // Elipses modeļa mazā ass (b)
-    CENTRAL_MERIDIAN: 24 / 180 * Math.PI,   // Centrālais meridiāns
-    OFFSET_X: 500000,                       // Koordinātu nobīde horizontālās (x) ass virzienā
-    OFFSET_Y: -6000000,                     // Koordinātu nobīde vertikālās (y) ass virzienā
-    SCALE: 0.9996,                          // Kartes mērogojuma faktors (reizinātājs)
+        PI = Math.PI,                       // Skaitlis pi
+        A_AXIS = 6378137,                   // Elipses modeļa lielā ass (a)
+        B_AXIS = 6356752.31414,             // Elipses modeļa mazā ass (b)
+        CENTRAL_MERIDIAN = 24 / 180 * PI,   // Centrālais meridiāns
+        OFFSET_X = 500000,                  // Koordinātu nobīde horizontālās (x) ass virzienā
+        OFFSET_Y = -6000000,                // Koordinātu nobīde vertikālās (y) ass virzienā
+        SCALE = 0.9996,                     // Kartes mērogojuma faktors (reizinātājs)
 
     // Aprēķina loka garumu no ekvatora līdz dotā punkta ģeogrāfiskajam platumam
-    getArcLengthOfMeridian: function(phi) {
+    getArcLengthOfMeridian = function(phi) {
         var alpha, beta, gamma, delta, epsilon, n;
 
-        n = (this.A_AXIS - this.B_AXIS) / (this.A_AXIS + this.B_AXIS);
-        alpha = ((this.A_AXIS + this.B_AXIS) / 2) * (1 + (Math.pow(n, 2) / 4) + (Math.pow(n, 4) / 64));
+        n = (A_AXIS - B_AXIS) / (A_AXIS + B_AXIS);
+        alpha = ((A_AXIS + B_AXIS) / 2) * (1 + (Math.pow(n, 2) / 4) + (Math.pow(n, 4) / 64));
         beta = (-3 * n / 2) + (9 * Math.pow(n, 3) / 16) + (-3 * Math.pow(n, 5) / 32);
         gamma = (15 * Math.pow(n, 2) / 16) + (-15 * Math.pow(n, 4) / 32);
         delta = (-35 * Math.pow(n, 3) / 48) + (105 * Math.pow(n, 5) / 256);
@@ -23,11 +25,11 @@ var LKS92WGS84 = {
     },
 
     // Aprēķina ģeogrāfisko platumu centrālā meridiāna punktam
-    getFootpointLatitude: function(y) {
+    getFootpointLatitude = function(y) {
         var y_, alpha_, beta_, gamma_, delta_, epsilon_, n;
 
-        n = (this.A_AXIS - this.B_AXIS) / (this.A_AXIS + this.B_AXIS);
-        alpha_ = ((this.A_AXIS + this.B_AXIS) / 2) * (1 + (Math.pow(n, 2) / 4) + (Math.pow(n, 4) / 64));
+        n = (A_AXIS - B_AXIS) / (A_AXIS + B_AXIS);
+        alpha_ = ((A_AXIS + B_AXIS) / 2) * (1 + (Math.pow(n, 2) / 4) + (Math.pow(n, 4) / 64));
         y_ = y / alpha_;
         beta_ = (3 * n / 2) + (-27 * Math.pow(n, 3) / 32) + (269 * Math.pow(n, 5) / 512);
         gamma_ = (21 * Math.pow(n, 2) / 16) + (-55 * Math.pow(n, 4) / 32);
@@ -38,14 +40,14 @@ var LKS92WGS84 = {
     },
 
     // Pārveido punkta ģeogrāfiskā platuma, garuma koordinātas par x, y koordinātām (bez pārvietojuma un mērogojuma)
-    convertMapLatLngToXY: function(phi, lambda, lambda0) {
+    convertMapLatLngToXY = function(phi, lambda, lambda0) {
         var N, nu2, ep2, t, t2, l,
             l3coef, l4coef, l5coef, l6coef, l7coef, l8coef,
             xy = [0, 0];
 
-        ep2 = (Math.pow(this.A_AXIS, 2) - Math.pow(this.B_AXIS, 2)) / Math.pow(this.B_AXIS, 2);
+        ep2 = (Math.pow(A_AXIS, 2) - Math.pow(B_AXIS, 2)) / Math.pow(B_AXIS, 2);
         nu2 = ep2 * Math.pow(Math.cos(phi), 2);
-        N = Math.pow(this.A_AXIS, 2) / (this.B_AXIS * Math.sqrt(1 + nu2));
+        N = Math.pow(A_AXIS, 2) / (B_AXIS * Math.sqrt(1 + nu2));
         t = Math.tan(phi);
         t2 = t * t;
 
@@ -61,22 +63,22 @@ var LKS92WGS84 = {
         xy[0] = N * Math.cos(phi) * l + (N / 6 * Math.pow(Math.cos(phi), 3) * l3coef * Math.pow(l, 3)) + (N / 120 * Math.pow(Math.cos(phi), 5) * l5coef * Math.pow(l, 5)) + (N / 5040 * Math.pow(Math.cos(phi), 7) * l7coef * Math.pow(l, 7));
 
         // y koordināta
-        xy[1] = this.getArcLengthOfMeridian(phi) + (t / 2 * N * Math.pow(Math.cos(phi), 2) * Math.pow(l, 2)) + (t / 24 * N * Math.pow(Math.cos(phi), 4) * l4coef * Math.pow(l, 4)) + (t / 720 * N * Math.pow(Math.cos(phi), 6) * l6coef * Math.pow(l, 6)) + (t / 40320 * N * Math.pow(Math.cos(phi), 8) * l8coef * Math.pow(l, 8));
+        xy[1] = getArcLengthOfMeridian(phi) + (t / 2 * N * Math.pow(Math.cos(phi), 2) * Math.pow(l, 2)) + (t / 24 * N * Math.pow(Math.cos(phi), 4) * l4coef * Math.pow(l, 4)) + (t / 720 * N * Math.pow(Math.cos(phi), 6) * l6coef * Math.pow(l, 6)) + (t / 40320 * N * Math.pow(Math.cos(phi), 8) * l8coef * Math.pow(l, 8));
         return xy;
     },
 
     // Pārveido punkta x, y koordinātas par ģeogrāfiskā platuma, garuma koordinātām (bez pārvietojuma un mērogojuma)
-    convertMapXYToLatLon: function(x, y, lambda0) {
+    convertMapXYToLatLon = function(x, y, lambda0) {
         var phif, Nf, Nfpow, nuf2, ep2, tf, tf2, tf4, cf,
             x1frac, x2frac, x3frac, x4frac, x5frac, x6frac, x7frac, x8frac,
             x2poly, x3poly, x4poly, x5poly, x6poly, x7poly, x8poly,
             latLng = [0, 0];
 
-        phif = this.getFootpointLatitude(y);
-        ep2 = (Math.pow(this.A_AXIS, 2) - Math.pow(this.B_AXIS, 2)) / Math.pow(this.B_AXIS, 2);
+        phif = getFootpointLatitude(y);
+        ep2 = (Math.pow(A_AXIS, 2) - Math.pow(B_AXIS, 2)) / Math.pow(B_AXIS, 2);
         cf = Math.cos(phif);
         nuf2 = ep2 * Math.pow(cf, 2);
-        Nf = Math.pow(this.A_AXIS, 2) / (this.B_AXIS * Math.sqrt(1 + nuf2));
+        Nf = Math.pow(A_AXIS, 2) / (B_AXIS * Math.sqrt(1 + nuf2));
         Nfpow = Nf;
 
         tf = Math.tan(phif);
@@ -121,33 +123,37 @@ var LKS92WGS84 = {
         latLng[1] = lambda0 + x1frac * x + x3frac * x3poly * Math.pow(x, 3) + x5frac * x5poly * Math.pow(x, 5) + x7frac * x7poly * Math.pow(x, 7);
 
         return latLng;
-    },
+    };
 
     // Pārveido punkta ģeogrāfiskā platuma, garuma koordinātas par x, y koordinātām (ar pārvietojumu un mērogojumu)
-    convertLatLonToXY: function(coordinates) {
-        var lat = coordinates[0] * this.PI / 180,
-            lng = coordinates[1] * this.PI / 180,
-            xy = this.convertMapLatLngToXY(lat, lng, this.CENTRAL_MERIDIAN);
+    publicStatic.convertLatLonToXY = function(coordinates) {
+        var lat = coordinates[0] * PI / 180,
+            lng = coordinates[1] * PI / 180,
+            xy = convertMapLatLngToXY(lat, lng, CENTRAL_MERIDIAN);
 
-        xy[0] = xy[0] * this.SCALE + this.OFFSET_X;
-        xy[1] = xy[1] * this.SCALE + this.OFFSET_Y;
+        xy[0] = xy[0] * SCALE + OFFSET_X;
+        xy[1] = xy[1] * SCALE + OFFSET_Y;
 
         if (xy[1] < 0) {
             xy[1] = xy[1] + 10000000;
         }
 
         return xy;
-    },
+    };
 
     // Pārveido punkta x, y koordinātas par ģeogrāfiskā platuma, garuma koordinātām (ar pārvietojumu un mērogojumu)
-    convertXYToLatLon: function(coordinates) {
-        var x = (coordinates[0] - this.OFFSET_X) / this.SCALE,
-            y = (coordinates[1] - this.OFFSET_Y) / this.SCALE,
-            latLng = this.convertMapXYToLatLon(x, y, this.CENTRAL_MERIDIAN);
+    publicStatic.convertXYToLatLon = function(coordinates) {
+        var x = (coordinates[0] - OFFSET_X) / SCALE,
+            y = (coordinates[1] - OFFSET_Y) / SCALE,
+            latLng = convertMapXYToLatLon(x, y, CENTRAL_MERIDIAN);
 
-        latLng[0] = latLng[0] / this.PI * 180;
-        latLng[1] = latLng[1] / this.PI * 180;
+        latLng[0] = latLng[0] / PI * 180;
+        latLng[1] = latLng[1] / PI * 180;
 
         return latLng;
-    }
+    };
+
+    return publicStatic;
 };
+
+LKS92WGS84 = LKS92WGS84();

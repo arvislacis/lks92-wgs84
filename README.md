@@ -21,8 +21,8 @@ mērogojuma faktors - `0.9996`, bet centrālais ass meridiāns - `24 E`.
 Šos parametrus iespējams mainīt klases konstantes mainīgajos `OFFSET_Y`, `SCALE` un `CENTRAL_MERIDIAN`; tāpat tiek izmantoti
 arī citi konstantie mainīgie, kas var ietekmēt gala rezultātu precizitāti un atbilstību testa datiem.
 - Koordinātu pārveidojumos ieteicams izmantot tikai to punktu koordinātas, kuri atrodas Latvijas teritorijā.
-- WGS-84 rezultātu kļūda **nav mazāka** par `10^(-8) grāda`, bet LKS-92 rezultātu - `10^(-2) metra`, tādēļ šos pārveidojumus
-nav ieteicams izmantot precīzos mērījumos un precīzu aprēķinu veikšanā vai tml.
+- WGS-84 rezultātu kļūda **nav mazāka** par **`10^(-8) grāda`**, bet LKS-92 rezultātu - **`10^(-2) metra`**, tādēļ šos **pārveidojumus
+nav ieteicams izmantot precīzos mērījumos un precīzu aprēķinu veikšanā** vai tml.
 
 ## Testpiemēru atskaites punkti ##
 
@@ -31,42 +31,41 @@ Lai salīdzinātu koordinātu pārveidojumu rezultātus, īpaši veicot jaunu pr
 
 | Punkta nosaukums | Virziens |  WGS-84 platums  |  WGS-84 garums  |  LKS-92 X  |  LKS-92 Y  |
 |:----------------:|:--------:|:----------------:|:---------------:|:----------:|:----------:|
-| "Baltās naktis"  | Z        |  58.079501574948 | 25.189986971284 | 570181.000 | 438180.000 |
-| "Austras koks"   | A        |  56.172282784562 | 28.095216442873 | 754190.003 | 232806.000 |
-| "Saules puķe"    | D        |  55.675228242509 | 26.580528487143 | 662269.000 | 172953.000 |
-| "Zaļais stars"   | R        |  56.377008455189 | 20.979185882058 | 313470.000 | 252137.000 |
+| Baltās naktis    | Z        |  58.079501574948 | 25.189986971284 | 570181.000 | 438180.000 |
+| Austras koks     | A        |  56.172282784562 | 28.095216442873 | 754190.003 | 232806.000 |
+| Saules puķe      | D        |  55.675228242509 | 26.580528487143 | 662269.000 | 172953.000 |
+| Zaļais stars     | R        |  56.377008455189 | 20.979185882058 | 313470.000 | 252137.000 |
 
-## Programmēšanas valodu pieejamība ##
+## Programmēšanas valodu atbalsts ##
 
-Projektā pašlaik pieejamās programmēšanas valodas - valodas, kurām izstrādāta koordinātu pārveidošanas klase `lks92-wgs84.*`:
+Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas, kurām izstrādāta koordinātu pārveidošanas klase `lks92-wgs84.*`:
 
 | Programmēšanas valoda |                 Klases autors                | Pēdējo izmaiņu datums |
 |:---------------------:|:--------------------------------------------:|:---------------------:|
 | JavaScript            | [Arvis Lācis](https://github.com/arvislacis) | 22.12.2015.           |
 
-Laika gaitā plānots projektu papildināt arī ar citām, mazāk vai vairāk, populārām programmēšanas valodām gan no projekta autora,
-gan no citu interesentu puses.
+Laika gaitā plānots projektu papildināt ar citām, mazāk vai vairāk, populārām programmēšanas valodām gan no projekta autora,
+gan citu interesentu puses.
 
 Jebkuram interesentam ir iespējams iesniegt - gan izmantojot GitHub *Pull requests* sistēmu, gan rakstot personīgi -
 jaunu koordinātu pārveidošanas klasi citā, viņam labi zināmā, programmēšanas valodā, ievērojot sekojošus nosacījumus:
-- **Nedublējiet jau esošās programmēšanas valodas.** Ja esošajos risinājumos pamanāt kļūdu, tad izveidojiet jaunu problēmas
-ziņojumu *(Issues)*, nevis pārstrādājiet vai veidojiet jaunu esoša risinājuma variantu.
-- **Stingri ievērojiet projekta autora veidoto klašu pierakstu** - komentāri, funkciju secība, funkciju ieejas un izejas
-parametri, vērtības utt. Atkāpes no iepriekš uzskaitītajām normām pieļaujamas tikai tad, ja izvēlētajā programmēšanas valodā nav iespējams
-izmantot tāda paša veida risinājumu, kas ir apšaubāmi.
-- **Atļauts izmantot izvēlētajā programmēšanas valodā unikālos operatorus un iebūvētās funkcijas** - gan kā alternatīvu, gan atkārtojošā,
+- **Nedublēt esošās programmēšanas valodas.** Ja esošajos risinājumos tiek pamanīta kļūda, tad nepieciešams izveidot jaunu problēmas
+ziņojumu *(Issues)*, nevis pārstrādāt vai veidot no jauna esoša risinājuma variantu.
+- **Stingri ievērot projekta autora veidoto klašu pierakstu** - komentāri, funkciju secība, funkciju ieejas un izejas
+parametri, vērtības utt. Atkāpes no iepriekš minētajām normām pieļaujamas tikai tad, ja izvēlētajā programmēšanas valodā nav iespējams
+izmantot tāda paša veida risinājumu, kas vairumā gadījumu ir apšaubāmi.
+- **Izvēlētajā programmēšanas valodā atļauts izmantot unikālos operatorus un iebūvētās funkcijas** - gan kā alternatīvu, gan atkārtojošā,
 liekā pirmkoda aizvietošanas nolūkiem -, piemēram, izmantojot valodā iebūvēto funkciju grādu pārveidošanai par radiāniem un otrādi, kas
-JavaScript valodā nav pieejama utml. Šādu operatoru, funkciju izmantojums nedrīkst pārlieku sarežģīt koordinātu pārveidošanas klasi un
+JavaScript valodā nav pieejama utml. Šādu operatoru, funkciju izmantojums nedrīkst pārlieku sarežģīt klases satura pārskatāmību un
 visiem funkciju ieejas, izejas parametriem jāpaliek nemainīgiem.
-- **Klases realizācijā stingri jāizvairās no papildus bibliotēku vai klašu izmantošanas**, ja tas nav iespējams, tad pieļaujama
-standarta bibliotēku iekļaušana.
+- **Klases realizācijā izvairīties no papildu bibliotēku vai klašu izmantošanas**, ja tas nav iespējams vai ir ļoti apgrūtinoši, tad
+pieļaujama standarta bibliotēku iekļaušana.
 - Ja vien to pieļauj programmēšanas valoda, **pirmkods jāstrukturē klases veidā ar statiski izsaucamām funkcijām**, kas nodrošina
-koordinātu pārveidošanas klases vienkāršu izmantošanu un atjaunināšanu, tāpat pārveidošanas funkcionalitātes nodrošināšanai
-nav nepieciešams veidot jaunu klases objektu.
+klases vienkāršu izmantošanu un atjaunināšanu, kā arī koordinātu pārveidošanas funkciju izsaukšanai nav nepieciešams veidot jaunu klases objektu.
 - **Iesniegtajam pirmkodam jāsatur gan klases datne `lks92-wgs84.*`, gan klases izmantošanas parauga un testpiemēru datne `example.*`.**
 Neskaidrību gadījumā ieteicams vadīties pēc projektā esošo datņu paraugiem.
 
-Ieteikumu, uzlabojumu vai cita veida kļūdu atklāšanas gadījumā ieteicams izveidot jaunu problēmas ziņojumu *(Issues)*.
+Ieteikumu, uzlabojumu vai cita veida kļūdu atklāšanas gadījumā vēlams izveidot jaunu problēmas ziņojumu *(Issues)*.
 
 ## Izmantotie avoti ##
 
