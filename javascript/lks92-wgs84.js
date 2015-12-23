@@ -26,17 +26,17 @@ var LKS92WGS84 = function() {
 
     // Aprēķina ģeogrāfisko platumu centrālā meridiāna punktam
     getFootpointLatitude = function(y) {
-        var y_, alpha_, beta_, gamma_, delta_, epsilon_, n;
+        var yd, alpha, beta, gamma, delta, epsilon, n;
 
         n = (A_AXIS - B_AXIS) / (A_AXIS + B_AXIS);
-        alpha_ = ((A_AXIS + B_AXIS) / 2) * (1 + (Math.pow(n, 2) / 4) + (Math.pow(n, 4) / 64));
-        y_ = y / alpha_;
-        beta_ = (3 * n / 2) + (-27 * Math.pow(n, 3) / 32) + (269 * Math.pow(n, 5) / 512);
-        gamma_ = (21 * Math.pow(n, 2) / 16) + (-55 * Math.pow(n, 4) / 32);
-        delta_ = (151 * Math.pow(n, 3) / 96) + (-417 * Math.pow(n, 5) / 128);
-        epsilon_ = (1097 * Math.pow(n, 4) / 512);
+        alpha = ((A_AXIS + B_AXIS) / 2) * (1 + (Math.pow(n, 2) / 4) + (Math.pow(n, 4) / 64));
+        yd = y / alpha;
+        beta = (3 * n / 2) + (-27 * Math.pow(n, 3) / 32) + (269 * Math.pow(n, 5) / 512);
+        gamma = (21 * Math.pow(n, 2) / 16) + (-55 * Math.pow(n, 4) / 32);
+        delta = (151 * Math.pow(n, 3) / 96) + (-417 * Math.pow(n, 5) / 128);
+        epsilon = (1097 * Math.pow(n, 4) / 512);
 
-        return y_ + (beta_ * Math.sin(2 * y_)) + (gamma_ * Math.sin(4 * y_)) + (delta_ * Math.sin(6 * y_)) + (epsilon_ * Math.sin(8 * y_));
+        return yd + (beta * Math.sin(2 * yd)) + (gamma * Math.sin(4 * yd)) + (delta * Math.sin(6 * yd)) + (epsilon * Math.sin(8 * yd));
     },
 
     // Pārveido punkta ģeogrāfiskā platuma, garuma koordinātas par x, y koordinātām (bez pārvietojuma un mērogojuma)
@@ -135,7 +135,7 @@ var LKS92WGS84 = function() {
         xy[1] = xy[1] * SCALE + OFFSET_Y;
 
         if (xy[1] < 0) {
-            xy[1] = xy[1] + 10000000;
+            xy[1] += 10000000;
         }
 
         return xy;

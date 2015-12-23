@@ -40,11 +40,11 @@ Lai salīdzinātu koordinātu pārveidojumu rezultātus, īpaši veicot jaunu pr
 
 Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas, kurām izstrādāta koordinātu pārveidošanas klase `lks92-wgs84.*`:
 
-| Programmēšanas valoda |                 Klases autors                    | Pēdējo izmaiņu datums |
-|:---------------------:|:------------------------------------------------:|:---------------------:|
-| JavaScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.12.2015.           |
-| PHP                   | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.           |
-| Python                | [Dāvis Mičulis](https://github.com/DavisMiculis) | 23.12.2015.           |
+| Programmēšanas valoda |                 Klases autors                    | Pēdējo būtisko izmaiņu datums |
+|:---------------------:|:------------------------------------------------:|:-----------------------------:|
+| JavaScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.12.2015.                   |
+| PHP                   | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.                   |
+| Python2/Python3       | [Dāvis Mičulis](https://github.com/DavisMiculis) | 24.12.2015.                   |
 
 Laika gaitā plānots projektu papildināt ar citām, mazāk vai vairāk, populārām programmēšanas valodām gan no projekta autora,
 gan citu interesentu puses.

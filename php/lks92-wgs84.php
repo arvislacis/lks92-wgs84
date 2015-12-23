@@ -27,14 +27,14 @@ class LKS92WGS84
     private static function getFootpointLatitude($y)
     {
         $n = (self::$A_AXIS - self::$B_AXIS) / (self::$A_AXIS + self::$B_AXIS);
-        $alpha_ = ((self::$A_AXIS + self::$B_AXIS) / 2) * (1 + (pow($n, 2) / 4) + (pow($n, 4) / 64));
-        $y_ = $y / $alpha_;
-        $beta_ = (3 * $n / 2) + (-27 * pow($n, 3) / 32) + (269 * pow($n, 5) / 512);
-        $gamma_ = (21 * pow($n, 2) / 16) + (-55 * pow($n, 4) / 32);
-        $delta_ = (151 * pow($n, 3) / 96) + (-417 * pow($n, 5) / 128);
-        $epsilon_ = (1097 * pow($n, 4) / 512);
+        $alpha = ((self::$A_AXIS + self::$B_AXIS) / 2) * (1 + (pow($n, 2) / 4) + (pow($n, 4) / 64));
+        $yd = $y / $alpha;
+        $beta = (3 * $n / 2) + (-27 * pow($n, 3) / 32) + (269 * pow($n, 5) / 512);
+        $gamma = (21 * pow($n, 2) / 16) + (-55 * pow($n, 4) / 32);
+        $delta = (151 * pow($n, 3) / 96) + (-417 * pow($n, 5) / 128);
+        $epsilon = (1097 * pow($n, 4) / 512);
 
-        return $y_ + ($beta_ * sin(2 * $y_)) + ($gamma_ * sin(4 * $y_)) + ($delta_ * sin(6 * $y_)) + ($epsilon_ * sin(8 * $y_));
+        return $yd + ($beta * sin(2 * $yd)) + ($gamma * sin(4 * $yd)) + ($delta * sin(6 * $yd)) + ($epsilon * sin(8 * $yd));
     }
 
     // Pārveido punkta ģeogrāfiskā platuma, garuma koordinātas par x, y koordinātām (bez pārvietojuma un mērogojuma)
@@ -131,7 +131,7 @@ class LKS92WGS84
         $xy[1] = $xy[1] * self::$SCALE + self::$OFFSET_Y;
 
         if ($xy[1] < 0) {
-            $xy[1] = $xy[1] + 10000000;
+            $xy[1] += 10000000;
         }
 
         return $xy;
