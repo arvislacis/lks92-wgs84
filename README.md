@@ -29,20 +29,22 @@ nav ieteicams izmantot precīzos mērījumos un precīzu aprēķinu veikšanā**
 Lai salīdzinātu koordinātu pārveidojumu rezultātus, īpaši veicot jaunu programmēšanas valodu pievienošanu, tiek izmantotas
 [Latvijas galējo punktu koordinātas](http://www.vietas.lv/index.php?p=34&gid=15):
 
-| Punkta nosaukums | Virziens |  WGS-84 platums  |  WGS-84 garums  |  LKS-92 X  |  LKS-92 Y  |
-|:----------------:|:--------:|:----------------:|:---------------:|:----------:|:----------:|
-| Baltās naktis    | Z        |  58.079501574948 | 25.189986971284 | 570181.000 | 438180.000 |
-| Austras koks     | A        |  56.172282784562 | 28.095216442873 | 754190.003 | 232806.000 |
-| Saules puķe      | D        |  55.675228242509 | 26.580528487143 | 662269.000 | 172953.000 |
-| Zaļais stars     | R        |  56.377008455189 | 20.979185882058 | 313470.000 | 252137.000 |
+| Punkta nosaukums | Virziens |  WGS-84 platums      |  WGS-84 garums      |  LKS-92 X      |  LKS-92 Y      |
+|:----------------:|:--------:|:--------------------:|:-------------------:|:--------------:|:--------------:|
+| Baltās naktis    | Z        |  **58.07950157**4948 | **25.18998697**1284 | **570181.00**0 | **438180.00**0 |
+| Austras koks     | A        |  **56.17228278**4562 | **28.09521644**2873 | **754190.00**3 | **232806.00**0 |
+| Saules puķe      | D        |  **55.67522824**2509 | **26.58052848**7143 | **662269.00**0 | **172953.00**0 |
+| Zaļais stars     | R        |  **56.37700845**5189 | **20.97918588**2058 | **313470.00**0 | **252137.00**0 |
 
 ## Programmēšanas valodu atbalsts ##
 
 Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas, kurām izstrādāta koordinātu pārveidošanas klase `lks92-wgs84.*`:
 
-| Programmēšanas valoda |                 Klases autors                | Pēdējo izmaiņu datums |
-|:---------------------:|:--------------------------------------------:|:---------------------:|
-| JavaScript            | [Arvis Lācis](https://github.com/arvislacis) | 22.12.2015.           |
+| Programmēšanas valoda |                 Klases autors                    | Pēdējo izmaiņu datums |
+|:---------------------:|:------------------------------------------------:|:---------------------:|
+| JavaScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.12.2015.           |
+| PHP                   | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.           |
+| Python                | [Dāvis Mičulis](https://github.com/DavisMiculis) | 23.12.2015.           |
 
 Laika gaitā plānots projektu papildināt ar citām, mazāk vai vairāk, populārām programmēšanas valodām gan no projekta autora,
 gan citu interesentu puses.

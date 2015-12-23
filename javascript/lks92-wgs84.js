@@ -110,7 +110,7 @@ var LKS92WGS84 = function() {
 
         x2poly = -1 - nuf2;
         x3poly = -1 - 2 * tf2 - nuf2;
-        x4poly = 5 + 3 * tf2 + 6 * nuf2 - 6 * tf2 * nuf2 - 3 * (nuf2 *nuf2) - 9 * tf2 * (nuf2 * nuf2);
+        x4poly = 5 + 3 * tf2 + 6 * nuf2 - 6 * tf2 * nuf2 - 3 * (nuf2 * nuf2) - 9 * tf2 * (nuf2 * nuf2);
         x5poly = 5 + 28 * tf2 + 24 * tf4 + 6 * nuf2 + 8 * tf2 * nuf2;
         x6poly = -61 - 90 * tf2 - 45 * tf4 - 107 * nuf2 + 162 * tf2 * nuf2;
         x7poly = -61 - 662 * tf2 - 1320 * tf4 - 720 * (tf4 * tf2);
