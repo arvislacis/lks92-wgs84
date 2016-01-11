@@ -43,6 +43,7 @@ Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas,
 | Programmēšanas valoda |                 Klases autors                    | Pēdējo būtisko izmaiņu datums |
 |:---------------------:|:------------------------------------------------:|:-----------------------------:|
 | C#                    | [Arvis Lācis](https://github.com/arvislacis)     | 28.12.2015.                   |
+| Java                  | [Arvis Lācis](https://github.com/arvislacis)     | 11.01.2016.                   |
 | JavaScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.12.2015.                   |
 | PHP                   | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.                   |
 | Python2/Python3       | [Dāvis Mičulis](https://github.com/DavisMiculis) | 24.12.2015.                   |
