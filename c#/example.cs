@@ -1,10 +1,10 @@
-﻿using lks92_wgs84;
+﻿﻿using LKS92WGS84;
 using System;
 using System.IO;
 
 class MainClass
 {
-    public static string testCase(double[] coordinates)
+    static string testCase(double[] coordinates)
     {
         double[] converted = LKS92WGS84.convertXYToLatLon(LKS92WGS84.convertLatLonToXY(coordinates));
         string result;
@@ -18,7 +18,7 @@ class MainClass
         return result;
     }
 
-    public static string testCase2(double[] coordinates, double[] lksValidate)
+    static string testCase2(double[] coordinates, double[] lksValidate)
     {
         double[] converted = LKS92WGS84.convertLatLonToXY(coordinates);
         string result;

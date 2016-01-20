@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import math
-from lks92_wgs84 import LKS92WGS84
+from LKS92WGS84 import LKS92WGS84
 
 def testCase(coordinates):
     converted = LKS92WGS84.convertXYToLatLon(LKS92WGS84.convertLatLonToXY(coordinates))

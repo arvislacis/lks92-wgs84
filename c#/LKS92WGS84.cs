@@ -1,6 +1,6 @@
-import java.lang.Math;
+﻿using System;
 
-class LKS92WGS84
+static class LKS92WGS84
 {
     // Koordinātu pārveidojumos izmantotās konstantes
     private static double PI = Math.PI;                         // Skaitlis pi
@@ -15,38 +15,38 @@ class LKS92WGS84
     private static double getArcLengthOfMeridian(double phi)
     {
         double n = (A_AXIS - B_AXIS) / (A_AXIS + B_AXIS);
-        double alpha = ((A_AXIS + B_AXIS) / 2) * (1 + (Math.pow(n, 2) / 4) + (Math.pow(n, 4) / 64));
-        double beta = (-3 * n / 2) + (9 * Math.pow(n, 3) / 16) + (-3 * Math.pow(n, 5) / 32);
-        double gamma = (15 * Math.pow(n, 2) / 16) + (-15 * Math.pow(n, 4) / 32);
-        double delta = (-35 * Math.pow(n, 3) / 48) + (105 * Math.pow(n, 5) / 256);
-        double epsilon = (315 * Math.pow(n, 4) / 512);
+        double alpha = ((A_AXIS + B_AXIS) / 2) * (1 + (Math.Pow(n, 2) / 4) + (Math.Pow(n, 4) / 64));
+        double beta = (-3 * n / 2) + (9 * Math.Pow(n, 3) / 16) + (-3 * Math.Pow(n, 5) / 32);
+        double gamma = (15 * Math.Pow(n, 2) / 16) + (-15 * Math.Pow(n, 4) / 32);
+        double delta = (-35 * Math.Pow(n, 3) / 48) + (105 * Math.Pow(n, 5) / 256);
+        double epsilon = (315 * Math.Pow(n, 4) / 512);
 
-        return alpha * (phi + (beta * Math.sin(2 * phi)) + (gamma * Math.sin(4 * phi)) + (delta * Math.sin(6 * phi)) + (epsilon * Math.sin(8 * phi)));
+        return alpha * (phi + (beta * Math.Sin(2 * phi)) + (gamma * Math.Sin(4 * phi)) + (delta * Math.Sin(6 * phi)) + (epsilon * Math.Sin(8 * phi)));
     }
 
     // Aprēķina ģeogrāfisko platumu centrālā meridiāna punktam
     private static double getFootpointLatitude(double y)
     {
         double n = (A_AXIS - B_AXIS) / (A_AXIS + B_AXIS);
-        double alpha = ((A_AXIS + B_AXIS) / 2) * (1 + (Math.pow(n, 2) / 4) + (Math.pow(n, 4) / 64));
+        double alpha = ((A_AXIS + B_AXIS) / 2) * (1 + (Math.Pow(n, 2) / 4) + (Math.Pow(n, 4) / 64));
         double yd = y / alpha;
-        double beta = (3 * n / 2) + (-27 * Math.pow(n, 3) / 32) + (269 * Math.pow(n, 5) / 512);
-        double gamma = (21 * Math.pow(n, 2) / 16) + (-55 * Math.pow(n, 4) / 32);
-        double delta = (151 * Math.pow(n, 3) / 96) + (-417 * Math.pow(n, 5) / 128);
-        double epsilon = (1097 * Math.pow(n, 4) / 512);
+        double beta = (3 * n / 2) + (-27 * Math.Pow(n, 3) / 32) + (269 * Math.Pow(n, 5) / 512);
+        double gamma = (21 * Math.Pow(n, 2) / 16) + (-55 * Math.Pow(n, 4) / 32);
+        double delta = (151 * Math.Pow(n, 3) / 96) + (-417 * Math.Pow(n, 5) / 128);
+        double epsilon = (1097 * Math.Pow(n, 4) / 512);
 
-        return yd + (beta * Math.sin(2 * yd)) + (gamma * Math.sin(4 * yd)) + (delta * Math.sin(6 * yd)) + (epsilon * Math.sin(8 * yd));
+        return yd + (beta * Math.Sin(2 * yd)) + (gamma * Math.Sin(4 * yd)) + (delta * Math.Sin(6 * yd)) + (epsilon * Math.Sin(8 * yd));
     }
 
     // Pārveido punkta ģeogrāfiskā platuma, garuma koordinātas par x, y koordinātām (bez pārvietojuma un mērogojuma)
     private static double[] convertMapLatLngToXY(double phi, double lambda, double lambda0)
     {
-        double[] xy = new double[] {0, 0};
+        double[] xy = new double[2] {0, 0};
 
-        double ep2 = (Math.pow(A_AXIS, 2) - Math.pow(B_AXIS, 2)) / Math.pow(B_AXIS, 2);
-        double nu2 = ep2 * Math.pow(Math.cos(phi), 2);
-        double N = Math.pow(A_AXIS, 2) / (B_AXIS * Math.sqrt(1 + nu2));
-        double t = Math.tan(phi);
+        double ep2 = (Math.Pow(A_AXIS, 2) - Math.Pow(B_AXIS, 2)) / Math.Pow(B_AXIS, 2);
+        double nu2 = ep2 * Math.Pow(Math.Cos(phi), 2);
+        double N = Math.Pow(A_AXIS, 2) / (B_AXIS * Math.Sqrt(1 + nu2));
+        double t = Math.Tan(phi);
         double t2 = t * t;
 
         double l = lambda - lambda0;
@@ -58,26 +58,26 @@ class LKS92WGS84
         double l8coef = 1385 - 3111 * t2 + 543 * (t2 * t2) - (t2 * t2 * t2);
 
         // x koordināta
-        xy[0] = N * Math.cos(phi) * l + (N / 6 * Math.pow(Math.cos(phi), 3) * l3coef * Math.pow(l, 3)) + (N / 120 * Math.pow(Math.cos(phi), 5) * l5coef * Math.pow(l, 5)) + (N / 5040 * Math.pow(Math.cos(phi), 7) * l7coef * Math.pow(l, 7));
+        xy[0] = N * Math.Cos(phi) * l + (N / 6 * Math.Pow(Math.Cos(phi), 3) * l3coef * Math.Pow(l, 3)) + (N / 120 * Math.Pow(Math.Cos(phi), 5) * l5coef * Math.Pow(l, 5)) + (N / 5040 * Math.Pow(Math.Cos(phi), 7) * l7coef * Math.Pow(l, 7));
 
         // y koordināta
-        xy[1] = getArcLengthOfMeridian(phi) + (t / 2 * N * Math.pow(Math.cos(phi), 2) * Math.pow(l, 2)) + (t / 24 * N * Math.pow(Math.cos(phi), 4) * l4coef * Math.pow(l, 4)) + (t / 720 * N * Math.pow(Math.cos(phi), 6) * l6coef * Math.pow(l, 6)) + (t / 40320 * N * Math.pow(Math.cos(phi), 8) * l8coef * Math.pow(l, 8));
+        xy[1] = getArcLengthOfMeridian(phi) + (t / 2 * N * Math.Pow(Math.Cos(phi), 2) * Math.Pow(l, 2)) + (t / 24 * N * Math.Pow(Math.Cos(phi), 4) * l4coef * Math.Pow(l, 4)) + (t / 720 * N * Math.Pow(Math.Cos(phi), 6) * l6coef * Math.Pow(l, 6)) + (t / 40320 * N * Math.Pow(Math.Cos(phi), 8) * l8coef * Math.Pow(l, 8));
         return xy;
     }
 
     // Pārveido punkta x, y koordinātas par ģeogrāfiskā platuma, garuma koordinātām (bez pārvietojuma un mērogojuma)
     private static double[] convertMapXYToLatLon(double x, double y, double lambda0)
     {
-        double[] latLng = new double[] {0, 0};
+        double[] latLng = new double[2] {0, 0};
 
         double phif = getFootpointLatitude(y);
-        double ep2 = (Math.pow(A_AXIS, 2) - Math.pow(B_AXIS, 2)) / Math.pow(B_AXIS, 2);
-        double cf = Math.cos(phif);
-        double nuf2 = ep2 * Math.pow(cf, 2);
-        double Nf = Math.pow(A_AXIS, 2) / (B_AXIS * Math.sqrt(1 + nuf2));
+        double ep2 = (Math.Pow(A_AXIS, 2) - Math.Pow(B_AXIS, 2)) / Math.Pow(B_AXIS, 2);
+        double cf = Math.Cos(phif);
+        double nuf2 = ep2 * Math.Pow(cf, 2);
+        double Nf = Math.Pow(A_AXIS, 2) / (B_AXIS * Math.Sqrt(1 + nuf2));
         double Nfpow = Nf;
 
-        double tf = Math.tan(phif);
+        double tf = Math.Tan(phif);
         double tf2 = tf * tf;
         double tf4 = tf2 * tf2;
 
@@ -113,10 +113,10 @@ class LKS92WGS84
         double x8poly = 1385 + 3633 * tf2 + 4095 * tf4 + 1575 * (tf4 * tf2);
 
         // Ģeogrāfiskais platums
-        latLng[0] = phif + x2frac * x2poly * (x * x) + x4frac * x4poly * Math.pow(x, 4) + x6frac * x6poly * Math.pow(x, 6) + x8frac * x8poly * Math.pow(x, 8);
+        latLng[0] = phif + x2frac * x2poly * (x * x) + x4frac * x4poly * Math.Pow(x, 4) + x6frac * x6poly * Math.Pow(x, 6) + x8frac * x8poly * Math.Pow(x, 8);
 
         // Ģeogrāfiskais garums
-        latLng[1] = lambda0 + x1frac * x + x3frac * x3poly * Math.pow(x, 3) + x5frac * x5poly * Math.pow(x, 5) + x7frac * x7poly * Math.pow(x, 7);
+        latLng[1] = lambda0 + x1frac * x + x3frac * x3poly * Math.Pow(x, 3) + x5frac * x5poly * Math.Pow(x, 5) + x7frac * x7poly * Math.Pow(x, 7);
 
         return latLng;
     }

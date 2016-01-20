@@ -1,6 +1,6 @@
 <?php
 
-require_once "lks92-wgs84.php";
+require_once "LKS92WGS84.php";
 
 function testCase(array $coordinates)
 {

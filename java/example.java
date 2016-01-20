@@ -1,8 +1,8 @@
 import java.lang.Math;
 
-class MainClass
+class Main
 {
-    public static String testCase(double[] coordinates)
+    static String testCase(double[] coordinates)
     {
         double[] converted = LKS92WGS84.convertXYToLatLon(LKS92WGS84.convertLatLonToXY(coordinates));
         String result;
@@ -16,7 +16,7 @@ class MainClass
         return result;
     }
 
-    public static String testCase2(double[] coordinates, double[] lksValidate)
+    static String testCase2(double[] coordinates, double[] lksValidate)
     {
         double[] converted = LKS92WGS84.convertLatLonToXY(coordinates);
         String result;
