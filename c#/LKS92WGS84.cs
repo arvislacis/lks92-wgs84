@@ -41,7 +41,7 @@ static class LKS92WGS84
     // Pārveido punkta ģeogrāfiskā platuma, garuma koordinātas par x, y koordinātām (bez pārvietojuma un mērogojuma)
     private static double[] convertMapLatLngToXY(double phi, double lambda, double lambda0)
     {
-        double[] xy = new double[2] {0, 0};
+        double[] xy = new double[] {0, 0};
 
         double ep2 = (Math.Pow(A_AXIS, 2) - Math.Pow(B_AXIS, 2)) / Math.Pow(B_AXIS, 2);
         double nu2 = ep2 * Math.Pow(Math.Cos(phi), 2);
@@ -68,7 +68,7 @@ static class LKS92WGS84
     // Pārveido punkta x, y koordinātas par ģeogrāfiskā platuma, garuma koordinātām (bez pārvietojuma un mērogojuma)
     private static double[] convertMapXYToLatLon(double x, double y, double lambda0)
     {
-        double[] latLng = new double[2] {0, 0};
+        double[] latLng = new double[] {0, 0};
 
         double phif = getFootpointLatitude(y);
         double ep2 = (Math.Pow(A_AXIS, 2) - Math.Pow(B_AXIS, 2)) / Math.Pow(B_AXIS, 2);

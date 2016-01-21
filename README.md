@@ -21,7 +21,7 @@ mērogojuma faktors - `0.9996`, bet centrālais ass meridiāns - `24 E`.
 Šos parametrus iespējams mainīt klases konstantes mainīgajos `OFFSET_Y`, `SCALE` un `CENTRAL_MERIDIAN`; tāpat tiek izmantoti
 arī citi konstantie mainīgie, kas var ietekmēt gala rezultātu precizitāti un atbilstību testa datiem.
 - Koordinātu pārveidojumos ieteicams izmantot tikai to punktu koordinātas, kuri atrodas Latvijas teritorijā.
-- WGS-84 rezultātu kļūda **nav mazāka** par **`10^(-8) grāda`**, bet LKS-92 rezultātu - **`10^(-2) metra`**, tādēļ šos **pārveidojumus
+- WGS-84 rezultātu kļūda **nav lielāka** par **`10^(-8) grāda`**, bet LKS-92 rezultātu - **`10^(-2) metra`**, tādēļ šos **pārveidojumus
 nav ieteicams izmantot precīzos mērījumos un precīzu aprēķinu veikšanā** vai tml.
 
 ## Testpiemēru atskaites punkti ##
@@ -38,7 +38,7 @@ Lai salīdzinātu koordinātu pārveidojumu rezultātus, īpaši veicot jaunu pr
 
 ## Programmēšanas valodu atbalsts ##
 
-Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas, kurām izstrādāta koordinātu pārveidošanas klase `lks92-wgs84.*`:
+Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas, kurām izstrādāta koordinātu pārveidošanas klase `LKS92WGS84.*`:
 
 | Programmēšanas valoda |                 Klases autors                    | Pēdējo būtisko izmaiņu datums |
 |:---------------------:|:------------------------------------------------:|:-----------------------------:|
@@ -48,6 +48,7 @@ Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas,
 | JavaScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.12.2015.                   |
 | PHP                   | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.                   |
 | Python2/Python3       | [Dāvis Mičulis](https://github.com/DavisMiculis) | 24.12.2015.                   |
+| Visual Basic          | [Arvis Lācis](https://github.com/arvislacis)     | 21.01.2016.                   |
 
 Laika gaitā plānots projektu papildināt ar citām, mazāk vai vairāk, populārām programmēšanas valodām gan no projekta autora,
 gan citu interesentu puses.

@@ -12,7 +12,7 @@ class LKS92WGS84
     constexpr static double SCALE = 0.9996;                       // Kartes mērogojuma faktors (reizinātājs)
 
     // Aprēķina loka garumu no ekvatora līdz dotā punkta ģeogrāfiskajam platumam
-    static double getArcLengthOfMeridian(double phi)
+    private: static double getArcLengthOfMeridian(double phi)
     {
         double n = (A_AXIS - B_AXIS) / (A_AXIS + B_AXIS);
         double alpha = ((A_AXIS + B_AXIS) / 2) * (1 + (pow(n, 2) / 4) + (pow(n, 4) / 64));
@@ -25,7 +25,7 @@ class LKS92WGS84
     }
 
     // Aprēķina ģeogrāfisko platumu centrālā meridiāna punktam
-    static double getFootpointLatitude(double y)
+    private: static double getFootpointLatitude(double y)
     {
         double n = (A_AXIS - B_AXIS) / (A_AXIS + B_AXIS);
         double alpha = ((A_AXIS + B_AXIS) / 2) * (1 + (pow(n, 2) / 4) + (pow(n, 4) / 64));
@@ -39,7 +39,7 @@ class LKS92WGS84
     }
 
     // Pārveido punkta ģeogrāfiskā platuma, garuma koordinātas par x, y koordinātām (bez pārvietojuma un mērogojuma)
-    static double *convertMapLatLngToXY(double phi, double lambda, double lambda0)
+    private: static double *convertMapLatLngToXY(double phi, double lambda, double lambda0)
     {
         double *xy = new double[2] {0, 0};
 
@@ -66,7 +66,7 @@ class LKS92WGS84
     }
 
     // Pārveido punkta x, y koordinātas par ģeogrāfiskā platuma, garuma koordinātām (bez pārvietojuma un mērogojuma)
-    static double *convertMapXYToLatLon(double x, double y, double lambda0)
+    private: static double *convertMapXYToLatLon(double x, double y, double lambda0)
     {
         double *latLng = new double[2] {0, 0};
 
