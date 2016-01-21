@@ -62,6 +62,7 @@ class LKS92WGS84
 
         // y koordināta
         xy[1] = getArcLengthOfMeridian(phi) + (t / 2 * N * Math.pow(Math.cos(phi), 2) * Math.pow(l, 2)) + (t / 24 * N * Math.pow(Math.cos(phi), 4) * l4coef * Math.pow(l, 4)) + (t / 720 * N * Math.pow(Math.cos(phi), 6) * l6coef * Math.pow(l, 6)) + (t / 40320 * N * Math.pow(Math.cos(phi), 8) * l8coef * Math.pow(l, 8));
+
         return xy;
     }
 
@@ -83,25 +84,25 @@ class LKS92WGS84
 
         double x1frac = 1 / (Nfpow * cf);
 
-        Nfpow *= Nf;   // Nf^2
+        Nfpow *= Nf;    // Nf^2
         double x2frac = tf / (2 * Nfpow);
 
-        Nfpow *= Nf;   // Nf^3
+        Nfpow *= Nf;    // Nf^3
         double x3frac = 1 / (6 * Nfpow * cf);
 
-        Nfpow *= Nf;   // Nf^4
+        Nfpow *= Nf;    // Nf^4
         double x4frac = tf / (24 * Nfpow);
 
-        Nfpow *= Nf;   // Nf^5
+        Nfpow *= Nf;    // Nf^5
         double x5frac = 1 / (120 * Nfpow * cf);
 
-        Nfpow *= Nf;   // Nf^6
+        Nfpow *= Nf;    // Nf^6
         double x6frac = tf / (720 * Nfpow);
 
-        Nfpow *= Nf;   // Nf^7
+        Nfpow *= Nf;    // Nf^7
         double x7frac = 1 / (5040 * Nfpow * cf);
 
-        Nfpow *= Nf;   // Nf^8
+        Nfpow *= Nf;    // Nf^8
         double x8frac = tf / (40320 * Nfpow);
 
         double x2poly = -1 - nuf2;

@@ -61,6 +61,7 @@ class LKS92WGS84
 
         // y koordināta
         $xy[1] = self::getArcLengthOfMeridian($phi) + ($t / 2 * $N * pow(cos($phi), 2) * pow($l, 2)) + ($t / 24 * $N * pow(cos($phi), 4) * $l4coef * pow($l, 4)) + ($t / 720 * $N * pow(cos($phi), 6) * $l6coef * pow($l, 6)) + ($t / 40320 * $N * pow(cos($phi), 8) * $l8coef * pow($l, 8));
+
         return $xy;
     }
 
@@ -82,25 +83,25 @@ class LKS92WGS84
 
         $x1frac = 1 / ($Nfpow * $cf);
 
-        $Nfpow *= $Nf;   // Nf^2
+        $Nfpow *= $Nf;  // Nf^2
         $x2frac = $tf / (2 * $Nfpow);
 
-        $Nfpow *= $Nf;   // Nf^3
+        $Nfpow *= $Nf;  // Nf^3
         $x3frac = 1 / (6 * $Nfpow * $cf);
 
-        $Nfpow *= $Nf;   // Nf^4
+        $Nfpow *= $Nf;  // Nf^4
         $x4frac = $tf / (24 * $Nfpow);
 
-        $Nfpow *= $Nf;   // Nf^5
+        $Nfpow *= $Nf;  // Nf^5
         $x5frac = 1 / (120 * $Nfpow * $cf);
 
-        $Nfpow *= $Nf;   // Nf^6
+        $Nfpow *= $Nf;  // Nf^6
         $x6frac = $tf / (720 * $Nfpow);
 
-        $Nfpow *= $Nf;   // Nf^7
+        $Nfpow *= $Nf;  // Nf^7
         $x7frac = 1 / (5040 * $Nfpow * $cf);
 
-        $Nfpow *= $Nf;   // Nf^8
+        $Nfpow *= $Nf;  // Nf^8
         $x8frac = $tf / (40320 * $Nfpow);
 
         $x2poly = -1 - $nuf2;

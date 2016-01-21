@@ -9,7 +9,7 @@ class LKS92WGS84:
     __PI = math.pi                              # Skaitlis pi
     __A_AXIS = 6378137                          # Elipses modeļa lielā ass (a)
     __B_AXIS = 6356752.31414                    # Elipses modeļa mazā ass (b)
-    __CENTRAL_MERIDIAN = 24 / 180 * math.pi     # Centrālais meridiāns
+    __CENTRAL_MERIDIAN = math.pi * 24 / 180     # Centrālais meridiāns
     __OFFSET_X = 500000                         # Koordinātu nobīde horizontālās (x) ass virzienā
     __OFFSET_Y = -6000000                       # Koordinātu nobīde vertikālās (y) ass virzienā
     __SCALE = 0.9996                            # Kartes mērogojuma faktors (reizinātājs)
@@ -63,6 +63,7 @@ class LKS92WGS84:
 
         # y koordināta
         xy[1] = LKS92WGS84.__getArcLengthOfMeridian(phi) + (t / 2 * N * math.pow(math.cos(phi), 2) * math.pow(l, 2)) + (t / 24 * N * math.pow(math.cos(phi), 4) * l4coef * math.pow(l, 4)) + (t / 720 * N * math.pow(math.cos(phi), 6) * l6coef * math.pow(l, 6)) + (t / 40320 * N * math.pow(math.cos(phi), 8) * l8coef * math.pow(l, 8))
+
         return xy
 
     # Pārveido punkta x, y koordinātas par ģeogrāfiskā platuma, garuma koordinātām (bez pārvietojuma un mērogojuma)
@@ -83,25 +84,25 @@ class LKS92WGS84:
 
         x1frac = 1 / (Nfpow * cf)
 
-        Nfpow *= Nf   # Nf^2
+        Nfpow *= Nf     # Nf^2
         x2frac = tf / (2 * Nfpow)
 
-        Nfpow *= Nf   # Nf^3
+        Nfpow *= Nf     # Nf^3
         x3frac = 1 / (6 * Nfpow * cf)
 
-        Nfpow *= Nf   # Nf^4
+        Nfpow *= Nf     # Nf^4
         x4frac = tf / (24 * Nfpow)
 
-        Nfpow *= Nf   # Nf^5
+        Nfpow *= Nf     # Nf^5
         x5frac = 1 / (120 * Nfpow * cf)
 
-        Nfpow *= Nf   # Nf^6
+        Nfpow *= Nf     # Nf^6
         x6frac = tf / (720 * Nfpow)
 
-        Nfpow *= Nf   # Nf^7
+        Nfpow *= Nf     # Nf^7
         x7frac = 1 / (5040 * Nfpow * cf)
 
-        Nfpow *= Nf   # Nf^8
+        Nfpow *= Nf     # Nf^8
         x8frac = tf / (40320 * Nfpow)
 
         x2poly = -1 - nuf2

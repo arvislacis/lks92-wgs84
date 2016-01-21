@@ -45,9 +45,10 @@ Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas,
 | C++                   | [Arvis Lācis](https://github.com/arvislacis)     | 21.01.2016.                   |
 | C#                    | [Arvis Lācis](https://github.com/arvislacis)     | 28.12.2015.                   |
 | Java                  | [Arvis Lācis](https://github.com/arvislacis)     | 11.01.2016.                   |
-| JavaScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.12.2015.                   |
+| JavaScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.01.2016.                   |
 | PHP                   | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.                   |
 | Python2/Python3       | [Dāvis Mičulis](https://github.com/DavisMiculis) | 24.12.2015.                   |
+| TypeScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.01.2016.                   |
 | Visual Basic          | [Arvis Lācis](https://github.com/arvislacis)     | 21.01.2016.                   |
 
 Laika gaitā plānots projektu papildināt ar citām, mazāk vai vairāk, populārām programmēšanas valodām gan no projekta autora,

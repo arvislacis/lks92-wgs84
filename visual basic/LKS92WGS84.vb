@@ -56,6 +56,7 @@
 
         ' y koordināta
         xy(1) = getArcLengthOfMeridian(phi) + (t / 2 * N * Math.Pow(Math.Cos(phi), 2) * Math.Pow(l, 2)) + (t / 24 * N * Math.Pow(Math.Cos(phi), 4) * l4coef * Math.Pow(l, 4)) + (t / 720 * N * Math.Pow(Math.Cos(phi), 6) * l6coef * Math.Pow(l, 6)) + (t / 40320 * N * Math.Pow(Math.Cos(phi), 8) * l8coef * Math.Pow(l, 8))
+
         Return xy
     End Function
 
@@ -76,25 +77,25 @@
 
         Dim x1frac As Double = 1 / (Nfpow * cf)
 
-        Nfpow *= Nf    ' Nf^2
+        Nfpow *= Nf     ' Nf^2
         Dim x2frac As Double = tf / (2 * Nfpow)
 
-        Nfpow *= Nf    ' Nf^3
+        Nfpow *= Nf     ' Nf^3
         Dim x3frac As Double = 1 / (6 * Nfpow * cf)
 
-        Nfpow *= Nf    ' Nf^4
+        Nfpow *= Nf     ' Nf^4
         Dim x4frac As Double = tf / (24 * Nfpow)
 
-        Nfpow *= Nf    ' Nf^5
+        Nfpow *= Nf     ' Nf^5
         Dim x5frac As Double = 1 / (120 * Nfpow * cf)
 
-        Nfpow *= Nf    ' Nf^6
+        Nfpow *= Nf     ' Nf^6
         Dim x6frac As Double = tf / (720 * Nfpow)
 
-        Nfpow *= Nf    ' Nf^7
+        Nfpow *= Nf     ' Nf^7
         Dim x7frac As Double = 1 / (5040 * Nfpow * cf)
 
-        Nfpow *= Nf    ' Nf^8
+        Nfpow *= Nf     ' Nf^8
         Dim x8frac As Double = tf / (40320 * Nfpow)
 
         Dim x2poly As Double = -1 - nuf2

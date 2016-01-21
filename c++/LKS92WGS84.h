@@ -3,13 +3,13 @@
 class LKS92WGS84
 {
     // Koordinātu pārveidojumos izmantotās konstantes
-    constexpr static double PI = M_PI;                            // Skaitlis pi
-    constexpr static double A_AXIS = 6378137;                     // Elipses modeļa lielā ass (a)
-    constexpr static double B_AXIS = 6356752.31414;               // Elipses modeļa mazā ass (b)
-    constexpr static double CENTRAL_MERIDIAN = PI * 24 / 180;     // Centrālais meridiāns
-    constexpr static double OFFSET_X = 500000;                    // Koordinātu nobīde horizontālās (x) ass virzienā
-    constexpr static double OFFSET_Y = -6000000;                  // Koordinātu nobīde vertikālās (y) ass virzienā
-    constexpr static double SCALE = 0.9996;                       // Kartes mērogojuma faktors (reizinātājs)
+    constexpr static double PI = M_PI;                          // Skaitlis pi
+    constexpr static double A_AXIS = 6378137;                   // Elipses modeļa lielā ass (a)
+    constexpr static double B_AXIS = 6356752.31414;             // Elipses modeļa mazā ass (b)
+    constexpr static double CENTRAL_MERIDIAN = PI * 24 / 180;   // Centrālais meridiāns
+    constexpr static double OFFSET_X = 500000;                  // Koordinātu nobīde horizontālās (x) ass virzienā
+    constexpr static double OFFSET_Y = -6000000;                // Koordinātu nobīde vertikālās (y) ass virzienā
+    constexpr static double SCALE = 0.9996;                     // Kartes mērogojuma faktors (reizinātājs)
 
     // Aprēķina loka garumu no ekvatora līdz dotā punkta ģeogrāfiskajam platumam
     private: static double getArcLengthOfMeridian(double phi)
@@ -62,6 +62,7 @@ class LKS92WGS84
 
         // y koordināta
         xy[1] = getArcLengthOfMeridian(phi) + (t / 2 * N * pow(cos(phi), 2) * pow(l, 2)) + (t / 24 * N * pow(cos(phi), 4) * l4coef * pow(l, 4)) + (t / 720 * N * pow(cos(phi), 6) * l6coef * pow(l, 6)) + (t / 40320 * N * pow(cos(phi), 8) * l8coef * pow(l, 8));
+
         return xy;
     }
 
@@ -83,25 +84,25 @@ class LKS92WGS84
 
         double x1frac = 1 / (Nfpow * cf);
 
-        Nfpow *= Nf;   // Nf^2
+        Nfpow *= Nf;    // Nf^2
         double x2frac = tf / (2 * Nfpow);
 
-        Nfpow *= Nf;   // Nf^3
+        Nfpow *= Nf;    // Nf^3
         double x3frac = 1 / (6 * Nfpow * cf);
 
-        Nfpow *= Nf;   // Nf^4
+        Nfpow *= Nf;    // Nf^4
         double x4frac = tf / (24 * Nfpow);
 
-        Nfpow *= Nf;   // Nf^5
+        Nfpow *= Nf;    // Nf^5
         double x5frac = 1 / (120 * Nfpow * cf);
 
-        Nfpow *= Nf;   // Nf^6
+        Nfpow *= Nf;    // Nf^6
         double x6frac = tf / (720 * Nfpow);
 
-        Nfpow *= Nf;   // Nf^7
+        Nfpow *= Nf;    // Nf^7
         double x7frac = 1 / (5040 * Nfpow * cf);
 
-        Nfpow *= Nf;   // Nf^8
+        Nfpow *= Nf;    // Nf^8
         double x8frac = tf / (40320 * Nfpow);
 
         double x2poly = -1 - nuf2;
