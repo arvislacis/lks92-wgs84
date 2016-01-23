@@ -40,16 +40,17 @@ Lai salīdzinātu koordinātu pārveidojumu rezultātus, īpaši veicot jaunu pr
 
 Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas, kurām izstrādāta koordinātu pārveidošanas klase `LKS92WGS84.*`:
 
-| Programmēšanas valoda |                 Klases autors                    | Pēdējo būtisko izmaiņu datums |
-|:---------------------:|:------------------------------------------------:|:-----------------------------:|
-| C++                   | [Arvis Lācis](https://github.com/arvislacis)     | 21.01.2016.                   |
-| C#                    | [Arvis Lācis](https://github.com/arvislacis)     | 28.12.2015.                   |
-| Java                  | [Arvis Lācis](https://github.com/arvislacis)     | 11.01.2016.                   |
-| JavaScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.01.2016.                   |
-| PHP                   | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.                   |
-| Python2/Python3       | [Dāvis Mičulis](https://github.com/DavisMiculis) | 24.12.2015.                   |
-| TypeScript            | [Arvis Lācis](https://github.com/arvislacis)     | 22.01.2016.                   |
-| Visual Basic          | [Arvis Lācis](https://github.com/arvislacis)     | 21.01.2016.                   |
+|                                Programmēšanas valoda                                 |                 Klases autors                    | Pēdējo būtisko izmaiņu datums |
+|:------------------------------------------------------------------------------------:|:------------------------------------------------:|:-----------------------------:|
+| [C++](https://github.com/arvislacis/lks92-wgs84/tree/master/c%2B%2B)                 | [Arvis Lācis](https://github.com/arvislacis)     | 21.01.2016.                   |
+| [C#](https://github.com/arvislacis/lks92-wgs84/tree/master/c%23)                     | [Arvis Lācis](https://github.com/arvislacis)     | 28.12.2015.                   |
+| [Java](https://github.com/arvislacis/lks92-wgs84/tree/master/java)                   | [Arvis Lācis](https://github.com/arvislacis)     | 11.01.2016.                   |
+| [JavaScript](https://github.com/arvislacis/lks92-wgs84/tree/master/javascript)       | [Arvis Lācis](https://github.com/arvislacis)     | 22.01.2016.                   |
+| [PHP](https://github.com/arvislacis/lks92-wgs84/tree/master/php)                     | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.                   |
+| [Python2/Python3](https://github.com/arvislacis/lks92-wgs84/tree/master/python)      | [Dāvis Mičulis](https://github.com/DavisMiculis) | 24.12.2015.                   |
+| [TypeScript](https://github.com/arvislacis/lks92-wgs84/tree/master/typescript)       | [Arvis Lācis](https://github.com/arvislacis)     | 22.01.2016.                   |
+| [Vala](https://github.com/arvislacis/lks92-wgs84/tree/master/vala)                   | [Arvis Lācis](https://github.com/arvislacis)     | 24.01.2016.                   |
+| [Visual Basic](https://github.com/arvislacis/lks92-wgs84/tree/master/visual%20basic) | [Arvis Lācis](https://github.com/arvislacis)     | 21.01.2016.                   |
 
 Laika gaitā plānots projektu papildināt ar citām, mazāk vai vairāk, populārām programmēšanas valodām gan no projekta autora,
 gan citu interesentu puses.
