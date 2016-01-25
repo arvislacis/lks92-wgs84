@@ -6,23 +6,23 @@ import math
 
 class LKS92WGS84:
     # Koordinātu pārveidojumos izmantotās konstantes
-    __PI = math.pi                              # Skaitlis pi
-    __A_AXIS = 6378137                          # Elipses modeļa lielā ass (a)
-    __B_AXIS = 6356752.31414                    # Elipses modeļa mazā ass (b)
-    __CENTRAL_MERIDIAN = math.pi * 24 / 180     # Centrālais meridiāns
-    __OFFSET_X = 500000                         # Koordinātu nobīde horizontālās (x) ass virzienā
-    __OFFSET_Y = -6000000                       # Koordinātu nobīde vertikālās (y) ass virzienā
-    __SCALE = 0.9996                            # Kartes mērogojuma faktors (reizinātājs)
+    __PI = math.pi                          # Skaitlis pi
+    __A_AXIS = 6378137                      # Elipses modeļa lielā ass (a)
+    __B_AXIS = 6356752.31414                # Elipses modeļa mazā ass (b)
+    __CENTRAL_MERIDIAN = __PI * 24 / 180    # Centrālais meridiāns
+    __OFFSET_X = 500000                     # Koordinātu nobīde horizontālās (x) ass virzienā
+    __OFFSET_Y = -6000000                   # Koordinātu nobīde vertikālās (y) ass virzienā
+    __SCALE = 0.9996                        # Kartes mērogojuma faktors (reizinātājs)
 
     # Aprēķina loka garumu no ekvatora līdz dotā punkta ģeogrāfiskajam platumam
     @staticmethod
     def __getArcLengthOfMeridian(phi):
         n = (LKS92WGS84.__A_AXIS - LKS92WGS84.__B_AXIS) / (LKS92WGS84.__A_AXIS + LKS92WGS84.__B_AXIS)
-        alpha = ((LKS92WGS84.__A_AXIS + LKS92WGS84.__B_AXIS) / 2) * (1 + (math.pow(n, 2) / 4) + (math.pow(n, 4) / 64))
-        beta = (-3 * n / 2) + (9 * math.pow(n, 3) / 16) + (-3 * math.pow(n, 5) / 32)
-        gamma = (15 * math.pow(n, 2) / 16) + (-15 * math.pow(n, 4) / 32)
-        delta = (-35 * math.pow(n, 3) / 48) + (105 * math.pow(n, 5) / 256)
-        epsilon = (315 * math.pow(n, 4) / 512)
+        alpha = ((LKS92WGS84.__A_AXIS + LKS92WGS84.__B_AXIS) / 2) * (1 + (n ** 2 / 4) + (n ** 4 / 64))
+        beta = (-3 * n / 2) + (9 * n ** 3 / 16) + (-3 * n ** 5 / 32)
+        gamma = (15 * n ** 2 / 16) + (-15 * n ** 4 / 32)
+        delta = (-35 * n ** 3 / 48) + (105 * n ** 5 / 256)
+        epsilon = (315 * n ** 4 / 512)
 
         return alpha * (phi + (beta * math.sin(2 * phi)) + (gamma * math.sin(4 * phi)) + (delta * math.sin(6 * phi)) + (epsilon * math.sin(8 * phi)))
 
@@ -30,12 +30,12 @@ class LKS92WGS84:
     @staticmethod
     def __getFootpointLatitude(y):
         n = (LKS92WGS84.__A_AXIS - LKS92WGS84.__B_AXIS) / (LKS92WGS84.__A_AXIS + LKS92WGS84.__B_AXIS)
-        alpha = ((LKS92WGS84.__A_AXIS + LKS92WGS84.__B_AXIS) / 2) * (1 + (math.pow(n, 2) / 4) + (math.pow(n, 4) / 64))
+        alpha = ((LKS92WGS84.__A_AXIS + LKS92WGS84.__B_AXIS) / 2) * (1 + (n ** 2 / 4) + (n ** 4 / 64))
         yd = y / alpha
-        beta = (3 * n / 2) + (-27 * math.pow(n, 3) / 32) + (269 * math.pow(n, 5) / 512)
-        gamma = (21 * math.pow(n, 2) / 16) + (-55 * math.pow(n, 4) / 32)
-        delta = (151 * math.pow(n, 3) / 96) + (-417 * math.pow(n, 5) / 128)
-        epsilon = (1097 * math.pow(n, 4) / 512)
+        beta = (3 * n / 2) + (-27 * n ** 3 / 32) + (269 * n ** 5 / 512)
+        gamma = (21 * n ** 2 / 16) + (-55 * n ** 4 / 32)
+        delta = (151 * n ** 3 / 96) + (-417 * n ** 5 / 128)
+        epsilon = (1097 * n ** 4 / 512)
 
         return yd + (beta * math.sin(2 * yd)) + (gamma * math.sin(4 * yd)) + (delta * math.sin(6 * yd)) + (epsilon * math.sin(8 * yd))
 
@@ -44,9 +44,9 @@ class LKS92WGS84:
     def __convertMapLatLngToXY(phi, lambda1, lambda0):
         xy = [0, 0]
 
-        ep2 = (math.pow(LKS92WGS84.__A_AXIS, 2) - math.pow(LKS92WGS84.__B_AXIS, 2)) / math.pow(LKS92WGS84.__B_AXIS, 2)
-        nu2 = ep2 * math.pow(math.cos(phi), 2)
-        N = math.pow(LKS92WGS84.__A_AXIS, 2) / (LKS92WGS84.__B_AXIS * math.sqrt(1 + nu2))
+        ep2 = (LKS92WGS84.__A_AXIS ** 2 - LKS92WGS84.__B_AXIS ** 2) / LKS92WGS84.__B_AXIS ** 2
+        nu2 = ep2 * math.cos(phi) ** 2
+        N = LKS92WGS84.__A_AXIS ** 2 / (LKS92WGS84.__B_AXIS * math.sqrt(1 + nu2))
         t = math.tan(phi)
         t2 = t * t
 
@@ -59,10 +59,10 @@ class LKS92WGS84:
         l8coef = 1385 - 3111 * t2 + 543 * (t2 * t2) - (t2 * t2 * t2)
 
         # x koordināta
-        xy[0] = N * math.cos(phi) * l + (N / 6 * math.pow(math.cos(phi), 3) * l3coef * math.pow(l, 3)) + (N / 120 * math.pow(math.cos(phi), 5) * l5coef * math.pow(l, 5)) + (N / 5040 * math.pow(math.cos(phi), 7) * l7coef * math.pow(l, 7))
+        xy[0] = N * math.cos(phi) * l + (N / 6 * math.cos(phi) ** 3 * l3coef * l ** 3) + (N / 120 * math.cos(phi) ** 5 * l5coef * l ** 5) + (N / 5040 * math.cos(phi) ** 7 * l7coef * l ** 7)
 
         # y koordināta
-        xy[1] = LKS92WGS84.__getArcLengthOfMeridian(phi) + (t / 2 * N * math.pow(math.cos(phi), 2) * math.pow(l, 2)) + (t / 24 * N * math.pow(math.cos(phi), 4) * l4coef * math.pow(l, 4)) + (t / 720 * N * math.pow(math.cos(phi), 6) * l6coef * math.pow(l, 6)) + (t / 40320 * N * math.pow(math.cos(phi), 8) * l8coef * math.pow(l, 8))
+        xy[1] = LKS92WGS84.__getArcLengthOfMeridian(phi) + (t / 2 * N * math.cos(phi) ** 2 * l ** 2) + (t / 24 * N * math.cos(phi) ** 4 * l4coef * l ** 4) + (t / 720 * N * math.cos(phi) ** 6 * l6coef * l ** 6) + (t / 40320 * N * math.cos(phi) ** 8 * l8coef * l ** 8)
 
         return xy
 
@@ -72,10 +72,10 @@ class LKS92WGS84:
         latLng = [0, 0]
 
         phif = LKS92WGS84.__getFootpointLatitude(y)
-        ep2 = (math.pow(LKS92WGS84.__A_AXIS, 2) - math.pow(LKS92WGS84.__B_AXIS, 2)) / math.pow(LKS92WGS84.__B_AXIS, 2)
+        ep2 = (LKS92WGS84.__A_AXIS ** 2 - LKS92WGS84.__B_AXIS ** 2) / LKS92WGS84.__B_AXIS ** 2
         cf = math.cos(phif)
-        nuf2 = ep2 * math.pow(cf, 2)
-        Nf = math.pow(LKS92WGS84.__A_AXIS, 2) / (LKS92WGS84.__B_AXIS * math.sqrt(1 + nuf2))
+        nuf2 = ep2 * cf ** 2
+        Nf = LKS92WGS84.__A_AXIS ** 2 / (LKS92WGS84.__B_AXIS * math.sqrt(1 + nuf2))
         Nfpow = Nf
 
         tf = math.tan(phif)
@@ -114,10 +114,10 @@ class LKS92WGS84:
         x8poly = 1385 + 3633 * tf2 + 4095 * tf4 + 1575 * (tf4 * tf2)
 
         # Ģeogrāfiskais platums
-        latLng[0] = phif + x2frac * x2poly * (x * x) + x4frac * x4poly * math.pow(x, 4) + x6frac * x6poly * math.pow(x, 6) + x8frac * x8poly * math.pow(x, 8)
+        latLng[0] = phif + x2frac * x2poly * (x * x) + x4frac * x4poly * x ** 4 + x6frac * x6poly * x ** 6 + x8frac * x8poly * x ** 8
 
         # Ģeogrāfiskais garums
-        latLng[1] = lambda0 + x1frac * x + x3frac * x3poly * math.pow(x, 3) + x5frac * x5poly * math.pow(x, 5) + x7frac * x7poly * math.pow(x, 7)
+        latLng[1] = lambda0 + x1frac * x + x3frac * x3poly * x ** 3 + x5frac * x5poly * x ** 5 + x7frac * x7poly * x ** 7
 
         return latLng
 

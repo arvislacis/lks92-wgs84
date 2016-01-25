@@ -48,6 +48,7 @@ Saraksts ar projektā pašlaik pieejamajām programmēšanas valodām - valodas,
 | [JavaScript](https://github.com/arvislacis/lks92-wgs84/tree/master/javascript)       | [Arvis Lācis](https://github.com/arvislacis)     | 22.01.2016.                   |
 | [PHP](https://github.com/arvislacis/lks92-wgs84/tree/master/php)                     | [Arvis Lācis](https://github.com/arvislacis)     | 23.12.2015.                   |
 | [Python2/Python3](https://github.com/arvislacis/lks92-wgs84/tree/master/python)      | [Dāvis Mičulis](https://github.com/DavisMiculis) | 24.12.2015.                   |
+| [Ruby](https://github.com/arvislacis/lks92-wgs84/tree/master/ruby)                   | [Arvis Lācis](https://github.com/arvislacis)     | 25.01.2016.                   |
 | [TypeScript](https://github.com/arvislacis/lks92-wgs84/tree/master/typescript)       | [Arvis Lācis](https://github.com/arvislacis)     | 22.01.2016.                   |
 | [Vala](https://github.com/arvislacis/lks92-wgs84/tree/master/vala)                   | [Arvis Lācis](https://github.com/arvislacis)     | 24.01.2016.                   |
 | [Visual Basic](https://github.com/arvislacis/lks92-wgs84/tree/master/visual%20basic) | [Arvis Lācis](https://github.com/arvislacis)     | 21.01.2016.                   |
